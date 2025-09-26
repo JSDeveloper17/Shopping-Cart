@@ -1,11 +1,12 @@
 import { createContext, useContext, useReducer } from "react"
 import { cartReduucer } from "../reducer/cartReducer"
 
+
 const initialState = {
     cartList:[],
     total:0
 }
-//creating Context
+//creating useContext
 
 const CartContext = createContext(initialState)
 
@@ -29,6 +30,7 @@ export const CartProvider = ({children})=>{
     const removeFromCart = (product) => {
         const updatedCartList  = state.cartList.filter(current => current.id !== product.id);
         dispatch({
+            
             type: "REMOVE_FROM_CART",
             payload:{
                 products: updatedCartList
